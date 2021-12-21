@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -30,9 +31,9 @@
                     <div class="todo-inputs">
                         <div class="todo-input-text input-group">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="to do">
+                                <input type="text" class="form-control work-todo-list-input" placeholder="to do">
                                 <div class="input-group-append">
-                                  <span class="input-group-text" style="cursor: pointer;" id="basic-addon2"><i class="fas fa-plus-square"></i></span>
+                                    <span class="input-group-text" id="plus-button-todo" style="cursor: pointer;"><i class="fas fa-plus-square"></i></span>
                                 </div>
                               </div>
                         </div>
@@ -49,5 +50,6 @@
             </div>
         </div>
     </main>
+    <script src="toDo.js"></script>
 </body>
 </html>
