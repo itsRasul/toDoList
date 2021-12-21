@@ -53,8 +53,15 @@ function addItemToDoListProccess(e){
 function addItemToDoListProccessKey(e){
     if(e.key == "Enter"){
         addItemToDoListProccess();
+    } 
+}
+
+function limitChar(e){
+    if (work.value.length >= 30) {
+        e.preventDefault();
     }
 }
 // Events
 plusBtn.addEventListener("click" , addItemToDoListProccess);
 work.addEventListener("keyup" , addItemToDoListProccessKey);
+work.addEventListener("keypress" , limitChar);
