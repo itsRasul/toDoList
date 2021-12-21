@@ -9,8 +9,14 @@ work.focus();
 
 // selectors
 const plusBtn = document.querySelector("#plus-button-todo");
-console.log("message")
 // functions
+function deleteItem(e){
+    let iconTimes = this;
+    let todoItem = iconTimes.parentNode;
+    let todoItemContainer = todoItem.parentNode;
+
+    todoItemContainer.removeChild(todoItem);
+}
 
 function addItemToDoListProccess(e){
     let todoItemContainer = document.createElement("div");
@@ -18,9 +24,19 @@ function addItemToDoListProccess(e){
 
     let todoItem = document.createElement("div");
     todoItem.innerHTML = work.value;
-    todoItem.classList.add("todo-item", "bg-dark", "text-white", "h6", "text-center","p-2", "rounded-lg")
+    todoItem.classList.add("todo-item", "bg-dark", "text-white", "h6", "text-center","p-2","pr-4", "rounded-lg")
     
     todoItemContainer.appendChild(todoItem);
+
+    let iconTimes = document.createElement("div");
+    iconTimes.classList.add("todo-item-icons-container" , "float-right");
+    iconTimes.style.cursor = "pointer";
+
+    let iIcon = document.createElement("i");
+    iIcon.classList.add("fas" , "fa-times" , "tofo-item-icon");
+
+    iconTimes.appendChild(iIcon);
+    todoItem.appendChild(iconTimes);
 
     let toDoListContainer = document.querySelector("#todo-list-container")
     toDoListContainer.appendChild(todoItemContainer);
@@ -31,7 +47,7 @@ function addItemToDoListProccess(e){
     // clear the input
     work.value = "";
     work.focus();
-        
+    iconTimes.addEventListener("click" , deleteItem);    
 }
 
 function addItemToDoListProccessKey(e){
