@@ -1,0 +1,7 @@
+#edit-input-fullscreen-page-container.displayNone{
+    display: node !important;
+}
+
+#edit-input-fullscreen-page-container.displayFlex{
+    display: flex !important;
+}
