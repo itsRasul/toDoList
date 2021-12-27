@@ -83,6 +83,9 @@ function deleteItem(e){
 }
 
 function addItemToDoListProccess(e){
+    if(work.value == ""){
+        return;
+    }
     let todoItemContainer = document.createElement("div");
     todoItemContainer.classList.add("todo-item-container");
 
