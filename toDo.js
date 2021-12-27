@@ -47,6 +47,7 @@ function addItemToDoneList(e){
 
     let doneIconTrash = document.createElement("i");
     doneIconTrash.classList.add("fas" , "fa-trash" , "done-icon-trash");
+    doneIconTrash.style.cursor = "pointer";
 
     donteItemIconContainer.appendChild(doneIconTrash);
     doneItem.appendChild(donteItemIconContainer);
@@ -55,6 +56,9 @@ function addItemToDoneList(e){
 
     // delete the item from todo list
     todoItemContainer.removeChild(todoItem)
+
+    // set a event listener for trash icon
+    doneIconTrash.addEventListener("click" , deleteItem);
 }
 
 function editItem(e){
