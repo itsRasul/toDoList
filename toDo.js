@@ -10,7 +10,7 @@ work.focus();
 // selectors
 const plusBtn = document.querySelector("#plus-button-todo");
 const closeFullScreenEdit = document.querySelector(".close-fullscreen");
-
+const doneItemContainer = document.querySelector(".done-item-container");
 
 // functions
 
@@ -31,6 +31,31 @@ function setEditInputToItsToDoItem(toDoItem , checkFullScreen){
     }
 }
 
+function addItemToDoneList(e){
+    const iconCheck = this;
+    const todoItem = iconCheck.parentNode.parentNode;
+    const todoItemContainer = todoItem.parentNode;
+    let value = todoItem.textContent;
+    console.log(value)
+    // add todoItem to Done list
+    let doneItem = document.createElement('div');
+    doneItem.classList.add("done-item", "bg-dark" , "text-white", "h6", "text-center", "p-2" , "rounded");
+    doneItem.textContent = value;
+
+    let donteItemIconContainer = document.createElement("div");
+    donteItemIconContainer.classList.add("done-item-icons-container" ,"float-right")
+
+    let doneIconTrash = document.createElement("i");
+    doneIconTrash.classList.add("fas" , "fa-trash" , "done-icon-trash");
+
+    donteItemIconContainer.appendChild(doneIconTrash);
+    doneItem.appendChild(donteItemIconContainer);
+
+    doneItemContainer.appendChild(doneItem);
+
+    // delete the item from todo list
+    todoItemContainer.removeChild(todoItem)
+}
 
 function editItem(e){
     editIcon = this;
@@ -72,13 +97,17 @@ function addItemToDoListProccess(e){
     iconTimes.style.cursor = "pointer";
     // iIcon => deleteIcon(i)
     let iIcon = document.createElement("i");
-    iIcon.classList.add("fas" , "fa-times" , "tofo-item-icon");
+    iIcon.classList.add("fas" , "fa-times" , "tofo-item-icon" , "mr-1");
 
     let editIcon = document.createElement("i");
     editIcon.classList.add("far" , "fa-edit" , "mr-1" , "edit-icon");
 
+    let checkIcon = document.createElement("i");
+    checkIcon.classList.add("fas" , "fa-check" , "todo-icon-check" );
+
     iconTimes.appendChild(editIcon);
     iconTimes.appendChild(iIcon);
+    iconTimes.appendChild(checkIcon)
     todoItem.appendChild(iconTimes);
 
     let toDoListContainer = document.querySelector("#todo-list-container")
@@ -93,7 +122,8 @@ function addItemToDoListProccess(e){
 
     //Events about icons
     iIcon.addEventListener("click" , deleteItem);
-    editIcon.addEventListener("click" , editItem); 
+    editIcon.addEventListener("click" , editItem);
+    checkIcon.addEventListener("click" , addItemToDoneList);
 }
 
 function addItemToDoListProccessKey(e){
