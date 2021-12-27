@@ -23,13 +23,22 @@ function closeFullScreenEditFun(e){
 
 function setEditInputToItsToDoItem(toDoItem , checkFullScreen){
     return function() {
-        let input = checkFullScreen.previousElementSibling;
-        let value = input.value;
+        try{
+            let input = checkFullScreen.previousElementSibling;
+            let value = input.value;
 
-        closeFullScreenEditFun.call(closeFullScreenEdit);
-        toDoItem.firstChild.textContent = value;
+            closeFullScreenEditFun.call(closeFullScreenEdit);
+            toDoItem.firstChild.textContent = value;
+            toDoItem = null;
+            checkFullScreen = null;
+        }catch(e){
+            
+        }
+        
     }
 }
+
+
 
 function addItemToDoneList(e){
     const iconCheck = this;
